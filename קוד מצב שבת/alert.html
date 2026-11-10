@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="he" dir="rtl" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google" content="notranslate">
+<title>מצב שבת: התראה</title>
+<link rel="icon" href="__EMBLEM__">
+<style>
+:root{color-scheme:dark;--night:#071331;--deep:#0b1d49;--panel:#10265a;--gold:#f0c04f;--pale:#fbe7ae;--gdeep:#b98318;--ice:#f4f6fc;--mist:#c3cde6;--line:rgba(240,192,79,.3);--alert:#ffb3a8;--font:"Segoe UI","Segoe UI Variable Text",Arial,sans-serif}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scrollbar-color:var(--gdeep) var(--night)}
+body{margin:0;min-height:100vh;background:radial-gradient(90% 46% at 50% 0,rgba(26,79,196,.5),transparent 72%),var(--night);color:var(--ice);font:400 17px/1.6 var(--font);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 24px;border-radius:999px;border:1.5px solid rgba(244,246,252,.5);background:transparent;font-weight:700;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s,transform .1s}
+.btn:hover{border-color:var(--gold);color:var(--pale)}
+.btn:active{transform:scale(.97)}
+.btn--gold{background:linear-gradient(180deg,#f7d06c,var(--gold));border-color:var(--gold);color:var(--night)}
+.btn--gold:hover{background:var(--pale);color:var(--night)}
+.btn--bad{border-color:var(--alert);color:var(--alert)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.x{display:grid;place-items:center;width:40px;height:40px;padding:0;background:none;border:0;border-radius:50%;color:var(--mist);font-size:26px;line-height:1;cursor:pointer;flex:none}
+.x:hover{color:var(--gold);background:rgba(240,192,79,.12)}
+.sig{position:fixed;inset-inline:0;bottom:0;z-index:8;display:flex;justify-content:center;padding:10px 12px 12px;background:linear-gradient(0deg,var(--night) 55%,transparent)}
+.sig a{display:inline-flex;align-items:center;gap:11px;min-height:44px;padding:5px 18px;border-radius:999px;border:2px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#8a5a12,#f7d774,#fff3c4,#d9a034,#8a5a12) border-box;color:#0b192b;text-decoration:none;font-size:14px;font-weight:500;line-height:1;box-shadow:0 6px 18px -8px rgba(0,0,0,.7);transition:transform .22s,box-shadow .22s}
+.sig i{width:2px;height:20px;border-radius:2px;background:var(--gdeep);flex:none}
+.sig img{display:block;width:30px;height:30px}
+.sig b{font-weight:700}
+.sig em{max-width:0;margin-inline-start:-11px;overflow:hidden;white-space:nowrap;font-style:normal;font-weight:700;color:var(--gdeep);opacity:0;transition:max-width .32s,margin .32s,opacity .2s}
+.sig a:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(240,192,79,.6)}
+.sig a:hover em,.sig a:focus-visible em{max-width:130px;margin-inline-start:0;opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+body{display:grid;place-items:center;padding:16px 16px 84px;overflow:hidden;background:radial-gradient(70% 55% at 50% 22%,rgba(26,79,196,.65),transparent 72%),var(--night)}
+.alert{position:relative;width:min(100%,420px);display:grid;justify-items:center;gap:6px;padding:26px 24px 24px;text-align:center;background:linear-gradient(170deg,var(--panel),var(--deep));border:1.5px solid var(--gold);border-radius:22px;box-shadow:0 0 0 6px rgba(240,192,79,.08),0 20px 50px rgba(0,0,0,.55);animation:pop .5s cubic-bezier(.2,.9,.3,1.2) backwards}
+.alert>.x{position:absolute;top:10px;left:10px}
+.logo{width:92px;height:auto;margin-block-end:4px;animation:spin 1.2s .1s cubic-bezier(.2,.8,.3,1) backwards;filter:drop-shadow(0 8px 18px rgba(0,0,0,.5))}
+.name{font-size:20px;font-weight:700;color:var(--gold)}
+.left{font-size:15px;color:var(--mist)}
+.count{direction:ltr;font-size:56px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.what{font-size:18px;font-weight:600}
+.save{margin-block:4px 10px;color:var(--pale)}
+.ring{position:absolute;inset:-1.5px;border-radius:inherit;pointer-events:none;box-shadow:0 0 0 0 rgba(240,192,79,.5);animation:pulse 2.4s 1s ease-out infinite}
+.btns{display:grid;gap:10px;width:100%}
+.done{font-weight:700;color:var(--pale)}
+@keyframes pop{from{opacity:0;transform:scale(.85) translateY(14px)}}
+@keyframes spin{from{opacity:0;transform:rotateY(-360deg) scale(.6)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,192,79,.45)}100%{box-shadow:0 0 0 22px rgba(240,192,79,0)}}
+</style>
+</head>
+<body>
+<div class="alert" role="alertdialog" aria-labelledby="name" aria-describedby="what">
+  <span class="ring" aria-hidden="true"></span>
+  <button class="x" id="close" type="button" aria-label="סגירה">×</button>
+  <img class="logo" src="__LOGO__" width="92" height="88" alt="יהודי אחד ומיוחד">
+  <p class="name" id="name"></p>
+  <p class="left" id="leftLabel">הזמן שנשאר</p>
+  <p class="count" id="count">--:--</p>
+  <p class="what" id="what"></p>
+  <p class="save" id="save">כדאי לשמור עכשיו את כל העבודה.</p>
+  <div class="btns" id="btns">
+    <button class="btn btn--gold" id="ok" type="button">הבנתי</button>
+    <button class="btn" id="cancel" type="button">לא לפעול הפעם</button>
+  </div>
+  <p class="done" id="done" hidden></p>
+</div>
+<footer class="sig"><a href="https://onejew.cb-site.com/" target="_blank" rel="noopener" aria-label="נבנה על ידי יהודי אחד ומיוחד. לכל המערכות החינמיות"><span>נבנה על ידי</span><i aria-hidden="true"></i><img src="__EMBLEM__" width="30" height="30" alt=""><b>יהודי אחד ומיוחד</b><em aria-hidden="true">לכל המערכות</em></a></footer>
+<script>
+(function () {
+  "use strict";
+  var TOKEN = "__TOKEN__", $ = function (id) { return document.getElementById(id); };
+  var q = new URLSearchParams(location.search), at = +q.get("at"), test = q.get("t") === "1", date = q.get("d") || "";
+  var mode = q.get("m"), word = mode === "screen" ? "שומר המסך של שבת שלום יופיע" : mode === "sleep" ? "המחשב יעבור למצב שינה" : "המחשב ייכבה";
+  var hm = new Date(at).toLocaleTimeString("he-IL", { hour: "2-digit", minute: "2-digit", hour12: false });
+  function post(path, body) {
+    return fetch(path, { method: "POST", headers: { "X-Token": TOKEN, "Content-Type": "application/json" }, body: JSON.stringify(body || {}) });
+  }
+  function shut() { window.close(); setTimeout(function () { $("done").hidden = false; $("done").textContent = "אפשר לסגור את החלון."; }, 300); }
+  $("name").textContent = test ? "בדיקת התראה" : (q.get("n") || "מצב שבת");
+  $("what").textContent = test ? "זו בדיקה בלבד, והמחשב לא ייכבה." : word + " בשעה " + hm + ".";
+  if (mode === "screen") $("save").textContent = "המחשב יישאר דלוק, והתוכנות הפתוחות ימשיכו לפעול מאחורי המסך.";
+  if (test) $("save").textContent = "כך תיראה ההתראה לפני כניסת שבת או חג.";
+  $("cancel").hidden = test;
+  function tick() {
+    var ms = Math.max(0, at - Date.now()), m = Math.floor(ms / 60000), s = Math.floor(ms / 1000) % 60;
+    $("count").textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  }
+  tick(); setInterval(tick, 500);
+  post("/api/seen");
+  $("ok").addEventListener("click", shut);
+  $("close").addEventListener("click", shut);
+  $("cancel").addEventListener("click", function () {
+    post("/api/skip", { date: date }).then(function (r) {
+      if (!r.ok) throw 0;
+      $("btns").hidden = true; $("done").hidden = false; $("done").textContent = (mode === "screen" ? "בוטל. הפעם שומר המסך לא יופיע." : "בוטל. הפעם המחשב לא ייכבה.");
+      setTimeout(shut, 2500);
+    }).catch(function () { $("done").hidden = false; $("done").textContent = "הביטול נכשל. אפשר לבטל מחלון התוכנה."; });
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") shut(); });
+  $("ok").focus();
+  // A soft chime, if the system allows sound.
+  try {
+    var a = new (window.AudioContext || window.webkitAudioContext)();
+    [784, 1047].forEach(function (f, i) {
+      var o = a.createOscillator(), g = a.createGain(), t = a.currentTime + i * 0.18;
+      o.type = "sine"; o.frequency.value = f; o.connect(g); g.connect(a.destination);
+      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.18, t + 0.02); g.gain.exponentialRampToValueAtTime(0.001, t + 0.9);
+      o.start(t); o.stop(t + 1);
+    });
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
